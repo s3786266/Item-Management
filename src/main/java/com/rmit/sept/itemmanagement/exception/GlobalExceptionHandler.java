@@ -1,16 +1,19 @@
 package com.rmit.sept.itemmanagement.exception;
 
+import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 import javax.servlet.http.HttpServletRequest;
 
+@RestControllerAdvice
+@AllArgsConstructor
 public class GlobalExceptionHandler {
 
     @ExceptionHandler(IllegalArgumentException.class)
-    public ResponseEntity<ErrorModel> handleMethodArgumentNotValid(MethodArgumentNotValidException exception, HttpServletRequest request) {
+    public ResponseEntity<ErrorModel> handleMethodArgumentNotValid(IllegalArgumentException exception, HttpServletRequest request) {
 
         ErrorModel error = new ErrorModel(HttpStatus.BAD_REQUEST, "Request has failed due to invalid method argument, please check your json response body");
         return new ResponseEntity<>(error, HttpStatus.BAD_REQUEST);
