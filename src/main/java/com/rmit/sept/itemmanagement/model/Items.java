@@ -12,9 +12,7 @@ import java.util.List;
 @NoArgsConstructor
 public class Items {
 
-//    private List<Item> itemList;
-
-    public List<Item> itemList;
+    private List<Item> itemList;
 
     public List<Item> getItemList() {
         if(itemList == null) {
@@ -23,21 +21,48 @@ public class Items {
         return itemList;
     }
 
-    public Item updateItemDetails(Item itemDetails){
-        itemDetails.setId(itemDetails.getId());
-        itemDetails.setName(itemDetails.getName());
-        itemDetails.setDesc(itemDetails.getDesc());
-        itemDetails.setImagePath(itemDetails.getImagePath());
-        itemDetails.setPrice(itemDetails.getPrice());
+    public Item updateItemDetails(Item itemDetails, String itemId){
+        for(Item item:itemList)
+        {
+            if(item.getId().equals(itemId))
+            {
+                itemDetails.setId(itemDetails.getId());
+                itemDetails.setTitle(itemDetails.getTitle());
+                itemDetails.setDesc(itemDetails.getDesc());
+                itemDetails.setImagePath(itemDetails.getImagePath());
+                itemDetails.setPrice(itemDetails.getPrice());
+            }
+        }
         return itemDetails;
+    }
+
+    public Item getItemDetailsById(String itemId) {
+        for(Item item:itemList)
+        {
+            if(item.getId().equals(itemId))
+            {
+               return item;
+            }
+        }
+        return null;
     }
 
     public Item saveItemDetails(Item itemDetails){
         return itemDetails;
     }
 
-//    public Item deleteItemDetails(){
-//        return null;
-//    }
+    public Item deleteItemDetailsById(String itemId) {
+        for(Item item:itemList)
+        {
+            if(item.getId().equals(itemId))
+            {
+                itemList.remove(item);
+                return item;
+            }
+        }
+        return null;
+    }
+
+
 
 }
