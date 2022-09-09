@@ -4,9 +4,6 @@ import com.rmit.sept.itemmanagement.model.Item;
 import com.rmit.sept.itemmanagement.model.Items;
 import lombok.Data;
 import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Repository;
-
-import java.util.List;
 
 @Component
 @Data
