@@ -1,4 +1,4 @@
 package com.rmit.sept.itemmanagement.dao;
 
-public class ItemService {
+public class ItemDAO {
 }
