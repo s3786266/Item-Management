@@ -4,11 +4,13 @@ import com.rmit.sept.itemmanagement.dao.ItemDAO;
 import com.rmit.sept.itemmanagement.model.Item;
 import com.rmit.sept.itemmanagement.model.Items;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
+import javax.validation.constraints.Pattern;
 
 @RestController
+@Validated
 public class ItemController {
 
     @Autowired
@@ -20,7 +22,7 @@ public class ItemController {
     }
 
     @GetMapping ("/item/item/{itemId}")
-    public Item getItemDetails (@PathVariable String itemId) {
+    public Item getItemDetails (@PathVariable @Pattern(regexp = "^[0-9]*$") String itemId) {
         return itemDAO.getItemDetailsById(itemId);
     }
 
