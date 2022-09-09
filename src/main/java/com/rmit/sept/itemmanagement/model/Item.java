@@ -9,8 +9,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class Item {
 
-    private Integer id;
-    private String name;
+    private String id;
+    private String title;
     private String desc;
     private String imagePath;
     private double price;
